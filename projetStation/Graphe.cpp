@@ -8,9 +8,39 @@
 #include <utility>
 #include <limits>
 
-Graphe::Graphe()  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FICHIER
-{
 
+Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FICHIER
+{
+    int w,x,y,z;
+    std::string passage, passage2;
+    std::vector<std::pair<int,int>> passage3;
+    std::ifstream fichier(nom);
+    if(fichier)
+    {
+        fichier >> w;
+        m_ordre = w;
+        for(int i=0;i<w;i++)
+        {
+            fichier >> x >> passage >> y;
+            m_listeSommet.push_back(new Sommet(i,passage,y));
+        }
+        fichier >> w;
+        m_taille =w;
+        for(int i=0;i<w;i++)
+        {
+            fichier >> x >> passage >> passage2 >> y >> z;
+            passage3.push_back(std::make_pair(y-1,z-1));
+            m_listeArcs.push_back(new Arcs(i,passage,passage2,y,z));
+        }
+        for(int i=0;i<m_taille;i++)   //affectation des adjacences
+        {
+            std::cout << i << " ";  ///temporaire
+            x=passage3[i].first;
+            y=passage3[i].second;
+            std::cout << x << " " <<  y << std::endl;  ///temporaire
+            m_listeSommet[x]->setAdjacence(m_listeSommet[y],m_listeArcs[i]);
+        }
+    }
 }
 
 

@@ -1,8 +1,6 @@
 #ifndef ARCS_H_INCLUDED
 #define ARCS_H_INCLUDED
 
-#include "Sommet.h"
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -18,9 +16,9 @@ class Arcs
         std::string m_nomTrajet;
         std::string m_type;
         int m_duree;
-        std::pair<Sommet,Sommet> m_SommetAdjacent;
+        std::pair<int,int> m_SommetAdjacent;
     public:
-        Arcs();
+        Arcs(int num,std::string nom,std::string type,int depart,int arrive);
         ~Arcs();
 };
 

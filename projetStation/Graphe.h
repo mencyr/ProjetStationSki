@@ -15,10 +15,11 @@
 class Graphe
 {
     private:
-        std::vector<Sommet> m_listeSommet;
+        std::vector<Sommet *> m_listeSommet;
         std::vector<Arcs *> m_listeArcs;
+        int m_ordre,m_taille;
     public:
-        Graphe();
+        Graphe(std::string nom);
         ~Graphe();
 
         void afficherTrajet();

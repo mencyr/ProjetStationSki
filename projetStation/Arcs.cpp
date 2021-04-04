@@ -8,7 +8,7 @@
 #include <utility>
 #include <limits>
 
-Arcs::Arcs()
+Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive)
 {
 
 }

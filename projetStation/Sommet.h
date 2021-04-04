@@ -1,9 +1,7 @@
 #ifndef SOMMET_H_INCLUDED
 #define SOMMET_H_INCLUDED
 
-#include "Graphe.h"
 #include "Arcs.h"
-
 
 #include <iostream>
 #include <vector>
@@ -21,8 +19,10 @@ class Sommet
         int m_altitude;
         int m_numSommet;
     public:
-        Sommet();
+        Sommet(int num,std::string nom,int alt);
         ~Sommet();
+
+        void setAdjacence(Sommet * som,Arcs * arc);
 };
 
 #endif // SOMMET_H_INCLUDED
