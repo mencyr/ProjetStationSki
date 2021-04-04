@@ -34,10 +34,10 @@ Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FIC
         }
         for(int i=0;i<m_taille;i++)   //affectation des adjacences
         {
-            std::cout << i << " ";  ///temporaire
+            std::cout << i + 1<< " ";  ///temporaire
             x=passage3[i].first;
             y=passage3[i].second;
-            std::cout << x << " " <<  y << std::endl;  ///temporaire
+            std::cout << x + 1<< " " <<  y + 1 << std::endl;  ///temporaire
             m_listeSommet[x]->setAdjacence(m_listeSommet[y],m_listeArcs[i]);
         }
     }
