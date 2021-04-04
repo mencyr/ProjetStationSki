@@ -1,0 +1,75 @@
+# depslib dependency file v1.0
+1617546661 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.cpp
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617558327 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.h
+	"Sommet.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617546661 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\sommet.cpp
+	"Sommet.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617558240 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\sommet.h
+	"Graphe.h"
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617546661 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\main.cpp
+	"Graphe.h"
+	"Sommet.h"
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617558318 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.h
+	"Sommet.h"
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617557468 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.cpp
+	"Graphe.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
