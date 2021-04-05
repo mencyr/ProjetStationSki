@@ -13,6 +13,11 @@
 
 int main()
 {
-    Graphe Station("Graphe.txt");
+
+    //afficherTrajet();
+    //Graphe Station("Graphe.txt");
     return 0;
 }
+
+
+

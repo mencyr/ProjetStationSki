@@ -1,6 +1,8 @@
 #ifndef ARCS_H_INCLUDED
 #define ARCS_H_INCLUDED
 
+
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -12,14 +14,16 @@
 class Arcs
 {
     private:
-        int m_numTrajet;
+        int m_num;
         std::string m_nomTrajet;
         std::string m_type;
         float m_duree;
         std::pair<int,int> m_SommetAdjacent;
     public:
-        Arcs(int num,std::string nom,std::string type,int depart,int arrive);
+        Arcs(int num,std::string nom,std::string type,int depart,int arrivee);
         ~Arcs();
+        int getDepart() const;
+        int getArrivee() const;
 };
 
 #endif // ARCS_H_INCLUDED

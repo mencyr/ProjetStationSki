@@ -1,5 +1,6 @@
 #include "Graphe.h"
 
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -57,8 +58,21 @@ Graphe::~Graphe()    ///DECONSTRUCTEURS DU GRAPHE
 }
 
 
+
+
 void Graphe::afficherTrajet()
 {
+
+    int numero;
+    std::cout<< "Saisir le numero du trajet:"<<std::endl;
+    std::cin>> numero;
+
+    m_listeArcs[numero];
+
+    std::cout<<"Le point de depart du trajet est:";
+    std::cout<< Arcs.getDepart() << std::endl;
+    std::cout<<"Le point d'arrivee du trajet est:";
+    std::cout<< Arcs.getArrivee() << std::endl;
 
 }
 
