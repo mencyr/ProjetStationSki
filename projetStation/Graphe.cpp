@@ -46,7 +46,14 @@ Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FIC
 
 Graphe::~Graphe()    ///DECONSTRUCTEURS DU GRAPHE
 {
-
+    for(auto elem : m_listeArcs)
+    {
+        delete elem;
+    }
+    for(auto elem : m_listeSommet)
+    {
+        delete elem;
+    }
 }
 
 
