@@ -30,7 +30,7 @@ Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FIC
         {
             fichier >> x >> passage >> passage2 >> y >> z;
             passage3.push_back(std::make_pair(y-1,z-1));
-            m_listeArcs.push_back(new Arcs(i,passage,passage2,y,z));
+            m_listeArcs.push_back(new Arcs(i,passage,passage2,y-1,z-1,m_listeSommet[y-1]->GetAlt(),m_listeSommet[z-1]->GetAlt()));
         }
         for(int i=0;i<m_taille;i++)   //affectation des adjacences
         {

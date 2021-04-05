@@ -2,7 +2,6 @@
 #define SOMMET_H_INCLUDED
 
 #include "Arcs.h"
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -23,6 +22,7 @@ class Sommet
         ~Sommet();
 
         void setAdjacence(Sommet * som,Arcs * arc);
+        int GetAlt();
 };
 
 #endif // SOMMET_H_INCLUDED

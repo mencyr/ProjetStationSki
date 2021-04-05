@@ -18,7 +18,7 @@ class Arcs
         float m_duree;
         std::pair<int,int> m_SommetAdjacent;
     public:
-        Arcs(int num,std::string nom,std::string type,int depart,int arrive);
+        Arcs(int num,std::string nom,std::string type,int depart,int arrive,int altd, int alta);
         ~Arcs();
 };
 

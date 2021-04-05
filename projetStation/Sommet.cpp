@@ -24,3 +24,9 @@ void Sommet::setAdjacence(Sommet * som,Arcs * arc)
 {
     m_adjacent.push_back(std::make_pair(arc,som));
 }
+
+
+int Sommet::GetAlt()
+{
+    return m_altitude;
+}
