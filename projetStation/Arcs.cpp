@@ -34,7 +34,7 @@ Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive,int al
 
     if (m_type=="KL")
     {
-        m_duree=(float)abs(altd-alta)*(1/6)/100;
+        m_duree=(float)abs(altd-alta)/600;
     }
 
     if (m_type=="SURF")
