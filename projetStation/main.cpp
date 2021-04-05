@@ -13,6 +13,7 @@
 
 int main()
 {
-    Graphe Station("Graphe.txt");
+
+Graphe Station("Graphe.txt");
     return 0;
 }

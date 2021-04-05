@@ -9,6 +9,7 @@
 #include <limits>
 
 Sommet::Sommet(int num,std::string nom,int alt)
+:m_numSommet(num),m_nom(nom),m_altitude(alt)
 {
 
 }
