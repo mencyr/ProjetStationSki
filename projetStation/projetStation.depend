@@ -8,6 +8,7 @@
 	<queue>
 	<utility>
 	<limits>
+	<cmath>
 
 1617624591 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.h
 	<iostream>
@@ -63,6 +64,78 @@
 
 1617624680 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.cpp
 	"Graphe.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617640137 source:c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\arcs.cpp
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617618060 c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\arcs.h
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617618060 source:c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\graphe.cpp
+	"Graphe.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617618060 c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\graphe.h
+	"Sommet.h"
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617618060 c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\sommet.h
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617633967 source:c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\main.cpp
+	"Graphe.h"
+	"Sommet.h"
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617621053 source:c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\sommet.cpp
+	"Sommet.h"
 	<iostream>
 	<vector>
 	<string>

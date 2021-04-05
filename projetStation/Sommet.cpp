@@ -45,3 +45,9 @@ int Sommet::getpoids(int num)
     }
     return 0;
 }
+
+
+int Sommet::GetAlt()
+{
+    return m_altitude;
+}

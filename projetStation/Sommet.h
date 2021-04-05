@@ -2,7 +2,6 @@
 #define SOMMET_H_INCLUDED
 
 #include "Arcs.h"
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,6 +25,7 @@ class Sommet
         std::vector<std::pair<Sommet*,Arcs *>> getVectAdjda();
         void setAdjacence(Sommet * som,Arcs * arc);
         int getpoids(int num);
+        int GetAlt();
 };
 
 #endif // SOMMET_H_INCLUDED
