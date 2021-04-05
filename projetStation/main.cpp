@@ -14,5 +14,7 @@
 int main()
 {
     Graphe Station("Graphe.txt");
+    std::vector<int> t;
+    t= Station.dijkstra(1);
     return 0;
 }

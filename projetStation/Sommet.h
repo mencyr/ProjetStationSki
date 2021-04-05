@@ -14,7 +14,7 @@
 class Sommet
 {
     private:
-        std::vector<std::pair<Arcs *,Sommet *>> m_adjacent;
+        std::vector<std::pair<Sommet *,Arcs *>> m_adjacent;
         std::string m_nom;
         int m_altitude;
         int m_numSommet;
@@ -22,7 +22,10 @@ class Sommet
         Sommet(int num,std::string nom,int alt);
         ~Sommet();
 
+        int getnbr();
+        std::vector<std::pair<Sommet*,Arcs *>> getVectAdjda();
         void setAdjacence(Sommet * som,Arcs * arc);
+        int getpoids(int num);
 };
 
 #endif // SOMMET_H_INCLUDED

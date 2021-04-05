@@ -24,8 +24,8 @@ class Graphe
 
         void afficherTrajet();
         void afficherVoisins();
-        std::vector<Sommet *> dijkstra(int depart,int arrivee);
-        void afficherPred(std::vector<Sommet *> pred);
+        std::vector<int> dijkstra(int depart);
+        void afficherPred(std::vector<int> pred,int depart,int fin);
 };
 
 #endif // GRAPHE_H_INCLUDED
