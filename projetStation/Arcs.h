@@ -22,8 +22,10 @@ class Arcs
     public:
         Arcs(int num,std::string nom,std::string type,int depart,int arrivee);
         ~Arcs();
-        int getDepart() const;
-        int getArrivee() const;
+        int getDepart();
+        int getArrivee();
+        std::string getNomTrajet();
+        std::string getType();
 };
 
 #endif // ARCS_H_INCLUDED

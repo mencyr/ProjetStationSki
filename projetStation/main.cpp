@@ -13,9 +13,10 @@
 
 int main()
 {
+    Graphe Station("Graphe.txt");
+    //Station.afficherTrajet();
+    Station.afficherVoisins();
 
-    //afficherTrajet();
-    //Graphe Station("Graphe.txt");
     return 0;
 }
 

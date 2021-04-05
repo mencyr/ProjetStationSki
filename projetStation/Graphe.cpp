@@ -31,7 +31,7 @@ Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FIC
         {
             fichier >> x >> passage >> passage2 >> y >> z;
             passage3.push_back(std::make_pair(y-1,z-1));
-            m_listeArcs.push_back(new Arcs(i,passage,passage2,y,z));
+            m_listeArcs.push_back(new Arcs(i,passage,passage2,y-1,z-1));
         }
         for(int i=0;i<m_taille;i++)   //affectation des adjacences
         {
@@ -64,23 +64,51 @@ void Graphe::afficherTrajet()
 {
 
     int numero;
-    std::cout<< "Saisir le numero du trajet:"<<std::endl;
-    std::cin>> numero;
 
-    m_listeArcs[numero];
+    std::cout<< "Choisir un numero de trajet pour savoir son point d'arrivee et son point de depart"<<std::endl;
+    std::cout<<"Mon choix :  ";
+    std::cin>> numero;
+    numero=numero-1;
+
+
 
     std::cout<<"Le point de depart du trajet est:";
-    std::cout<< Arcs.getDepart() << std::endl;
+    std::cout<< m_listeArcs[numero]->getDepart() << std::endl;
     std::cout<<"Le point d'arrivee du trajet est:";
-    std::cout<< Arcs.getArrivee() << std::endl;
+    std::cout<< m_listeArcs[numero]->getArrivee() << std::endl;
 
 }
 
 
 void Graphe::afficherVoisins()
 {
+    int numero;
+
+    std::cout<<"Choisir un point pour connaitre les trajets qui y partent et qui y arrivent"<<std::endl;
+    std::cout<<"Mon choix :  ";
+    std::cin>>numero;
+    numero=numero-1;
+
+    for(int i=0;i< m_taille;i++)
+    {
+        if(numero==m_listeArcs[i]->getDepart())
+        {
+            std::cout<<" => Un des trajets qui part du point numero  "<< numero+1 <<"  est:  ";
+            std::cout<<m_listeArcs[i]->getNomTrajet()<<std::endl;
+            std::cout<<"    Le type du trajet est ";
+            std::cout<<m_listeArcs[i]->getType()<<std::endl;
+        }
+
+        if(numero==m_listeArcs[i]->getArrivee())
+        {   std::cout<<" => Un des trajets qui arrive au point numero  "<< numero+1 <<"  est:  ";
+            std::cout<<m_listeArcs[i]->getNomTrajet()<<std::endl;
+            std::cout<<"    Le type du trajet est ";
+            std::cout<<m_listeArcs[i]->getType()<<std::endl;
+        }
+    }
 
 }
+
 
 
 std::vector<Sommet *> Graphe::dijkstra(int depart,int arrivee)
