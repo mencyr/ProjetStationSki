@@ -144,7 +144,7 @@
 	<utility>
 	<limits>
 
-1617706231 source:c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.cpp
+1617720063 source:c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.cpp
 	"Graphe.h"
 	<iostream>
 	<vector>
@@ -154,9 +154,10 @@
 	<utility>
 	<limits>
 
-1617705266 c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.h
+1617719111 c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.h
 	"Sommet.h"
 	"Arcs.h"
+	"Console.h"
 	<iostream>
 	<vector>
 	<string>
@@ -175,7 +176,7 @@
 	<utility>
 	<limits>
 
-1617706286 source:c:\users\guill_000\documents\github\projetstationski\projetstation\main.cpp
+1617715503 source:c:\users\guill_000\documents\github\projetstationski\projetstation\main.cpp
 	"Graphe.h"
 	"Sommet.h"
 	"Arcs.h"
@@ -196,4 +197,12 @@
 	<queue>
 	<utility>
 	<limits>
+
+1617717605 c:\users\guill_000\documents\github\projetstationski\projetstation\console.h
+	<iostream>
+
+1617717605 source:c:\users\guill_000\documents\github\projetstationski\projetstation\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
 

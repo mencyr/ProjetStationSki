@@ -3,6 +3,7 @@
 
 #include "Sommet.h"
 #include "Arcs.h"
+#include "Console.h"
 
 
 #include <iostream>
@@ -27,6 +28,7 @@ class Graphe
         void afficherVoisins();
         std::vector<Sommet *> dijkstra(int depart,int arrivee);
         void afficherPred(std::vector<Sommet *> pred);
+        int interface4();
         int interface();
 };
 

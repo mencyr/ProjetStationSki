@@ -13,12 +13,10 @@
 
 int main()
 {
+
     Graphe Station("Graphe.txt");
 
-    //Station.afficherTrajet();
-    //Station.afficherVoisins();
-
-    Station.interface();
+    Station.interface(); // Interface utilisateur
 
     return 0;
 }
