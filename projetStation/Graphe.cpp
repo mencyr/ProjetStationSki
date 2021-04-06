@@ -122,3 +122,27 @@ void Graphe::afficherPred(std::vector<Sommet *> pred)
 {
 
 }
+
+
+int Graphe::interface()
+{
+    std::cout<<" 2.    Choisir un point pour connaitre les trajets qui y partent et les trajets qui y arrivent"<<std::endl;
+     std::cout<<" 1.    Choisir un trajet ( piste / remontee / entre deux arrets de bus ) pour savoir d'ou il vient et ou il arrive"<<std::endl;
+     std::cout<<" 3.    Connaitre l'itineraire le plus rapide entre deux points de la station"<<std::endl;
+
+
+    int choix;
+    std::cout<<std::endl;
+    std::cout<<"   Saisir votre choix"<<std::endl;
+    std::cin>>choix;
+
+    switch(choix)
+    {
+        case 1: afficherTrajet();
+        case 2: afficherVoisins();
+        break;
+    }
+
+        return 0;
+
+}

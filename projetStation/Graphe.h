@@ -27,6 +27,7 @@ class Graphe
         void afficherVoisins();
         std::vector<Sommet *> dijkstra(int depart,int arrivee);
         void afficherPred(std::vector<Sommet *> pred);
+        int interface();
 };
 
 #endif // GRAPHE_H_INCLUDED

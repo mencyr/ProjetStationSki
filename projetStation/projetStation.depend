@@ -71,7 +71,9 @@
 	<utility>
 	<limits>
 
-1617645537 source:c:\users\guill_000\documents\github\projetstationski\projetstation\arcs.cpp
+1617703246 ated upstream
+
+1617703651 source:c:\users\guill_000\documents\github\projetstationski\projetstation\arcs.cpp
 	"Arcs.h"
 	<iostream>
 	<vector>
@@ -81,7 +83,50 @@
 	<utility>
 	<limits>
 
-1617644565 c:\users\guill_000\documents\github\projetstationski\projetstation\arcs.h
+1617703246 shed changes
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+	"Graphe.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+	"Sommet.h"
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+	"Graphe.h"
+	"Sommet.h"
+	"Arcs.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+	"Sommet.h"
 	<iostream>
 	<vector>
 	<string>
@@ -90,7 +135,16 @@
 	<utility>
 	<limits>
 
-1617651296 source:c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.cpp
+1617703651 c:\users\guill_000\documents\github\projetstationski\projetstation\arcs.h
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	<queue>
+	<utility>
+	<limits>
+
+1617706231 source:c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.cpp
 	"Graphe.h"
 	<iostream>
 	<vector>
@@ -100,7 +154,7 @@
 	<utility>
 	<limits>
 
-1617641019 c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.h
+1617705266 c:\users\guill_000\documents\github\projetstationski\projetstation\graphe.h
 	"Sommet.h"
 	"Arcs.h"
 	<iostream>
@@ -121,7 +175,7 @@
 	<utility>
 	<limits>
 
-1617646046 source:c:\users\guill_000\documents\github\projetstationski\projetstation\main.cpp
+1617706286 source:c:\users\guill_000\documents\github\projetstationski\projetstation\main.cpp
 	"Graphe.h"
 	"Sommet.h"
 	"Arcs.h"
@@ -133,7 +187,7 @@
 	<utility>
 	<limits>
 
-1617641019 source:c:\users\guill_000\documents\github\projetstationski\projetstation\sommet.cpp
+1617703651 source:c:\users\guill_000\documents\github\projetstationski\projetstation\sommet.cpp
 	"Sommet.h"
 	<iostream>
 	<vector>

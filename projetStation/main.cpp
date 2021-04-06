@@ -14,8 +14,11 @@
 int main()
 {
     Graphe Station("Graphe.txt");
+
     //Station.afficherTrajet();
-    Station.afficherVoisins();
+    //Station.afficherVoisins();
+
+    Station.interface();
 
     return 0;
 }
