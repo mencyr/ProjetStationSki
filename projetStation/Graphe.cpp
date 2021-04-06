@@ -8,6 +8,22 @@
 #include <queue>
 #include <utility>
 #include <limits>
+#include <windows.h>
+
+#define NombreChemin 12
+
+
+
+void gotoligcol( int lig, int col )
+{
+// ressources
+COORD mycoord;
+
+mycoord.X = col;
+mycoord.Y = lig;
+SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
+
 
 
 Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FICHIER
@@ -119,248 +135,69 @@ void Graphe::afficherVoisins()
 }
 
 
-int Graphe::interface4()
+std::vector<bool> Graphe::interface4()
 {
         int preferences;
         std::cout<<std::endl;
         std::cout<<"          CHOISIR SES PREFERENCES"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          0.   N"<<std::endl;
+        std::cout<<"          0.   Pistes Noires"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          1.   R"<<std::endl;
+        std::cout<<"          1.   Pistes Rouges"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          2.   B"<<std::endl;
+        std::cout<<"          2.   Pistes Bleues"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          3.   V"<<std::endl;
+        std::cout<<"          3.   Pistes Vertes"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          4.   KL"<<std::endl;
+        std::cout<<"          4.   Piste de Kilometre Lance"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          5.   SURF"<<std::endl;
+        std::cout<<"          5.   Domaine reserve au Surf"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          6.   TDH"<<std::endl;
+        std::cout<<"          6.   Telepherique"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          7.   TC"<<std::endl;
+        std::cout<<"          7.   Telecabine"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          8.   TSD"<<std::endl;
+        std::cout<<"          8.   Telesiege debrayable"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          9.   TS"<<std::endl;
+        std::cout<<"          9.   Telesiege"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          10.  TK"<<std::endl;
+        std::cout<<"          10.  Teleski"<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"          11.  BUS"<<std::endl;
+        std::cout<<"          11.  Navette Bus"<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"      12.  J'ai finis"<<std::endl;
         std::cout<<std::endl;
         std::cout<<std::endl;
+
+        std::cout<<"  Entrer le numero des trajets que vous ne souhaitez pas emprunter"<<std::endl;
         std::cout<< "Votre choix:";
         std::cin>>preferences;
 
-        if(preferences==0)
+        std::vector<bool> choix;
+        for(int i=0;NombreChemin;i++)
         {
-            std::cout<<"   =>Voulez-vous emprunter une piste noire ?";
-                int i=0;
-                std::cout<<"    1. oui        2. non  :";
-                std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
+            choix.push_back(false);
         }
 
-        if(preferences==1)
-            {
-                std::cout<<"   =>Voulez-vous emprunter une piste rouge ?";
-                int i=0;
-                std::cout<<"    1. oui        2. non  :";
-                std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-            }
-
-        if(preferences==2)
+        while(preferences!=12)
         {
-            std::cout<<"   =>Voulez-vous emprunter une piste bleue ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
 
-                    }
-                if (i==2)
-                    {
+           for(int i=0;i<12;i++)
+           {
+               gotoligcol(i+1,5);
+                std::cout<<"X";
+               if(preferences==i)
+              {
+                choix[i]=true;
+              }
+           }
 
-                    }
-
-        }
-
-        if(preferences==3)
-        {
-            std::cout<<"   =>Voulez-vous emprunter une piste verte ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==4)
-        {
-            std::cout<<"   =>Voulez-vous emprunter un KL ? ";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==5)
-        {
-             std::cout<<"   =>Voulez-vous emprunter une piste pour les surfs ?";
-             int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==6)
-        {
-            std::cout<<"   =>Voulez-vous emprunter un TDH ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==7)
-        {
-            std::cout<<"   =>Voulez-vous emprunter un TC ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==8)
-        {
-            std::cout<<"   =>Voulez-vous emprunter un TSD ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==9)
-        {
-            std::cout<<"   =>Voulez-vous emprunter un TS ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==10)
-        {
-            std::cout<<"   =>Voulez-vous emprunter un TK ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
-
-        }
-
-        if(preferences==11)
-        {
-            std::cout<<"   =>Voulez-vous emprunter un Bus ?";
-            int i=0;
-            std::cout<<"    1. oui        2. non  :";
-            std::cin>>i;
-                if (i==1)
-                    {
-
-                    }
-                if (i==2)
-                    {
-
-                    }
 
         }
 
 
 
-
- return 0;
+ return choix;
 }
 
 
@@ -377,7 +214,7 @@ void Graphe::afficherPred(std::vector<Sommet *> pred)
 }
 
 
-int Graphe::interface()
+int Graphe::interface0()
 {
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -405,13 +242,13 @@ int Graphe::interface()
         case 1:
             system("CLS");
             afficherTrajet();
-            interface();
+            interface0();
             break;
 
         case 2:
             system("CLS");
             afficherVoisins();
-            interface();
+            interface0();
             break;
 
         case 3:
@@ -426,8 +263,10 @@ int Graphe::interface()
 
         default:
             system("CLS");
-            interface();
+            interface0();
             break;
     }
-        return 0;
+
+    return 0;
+
 }

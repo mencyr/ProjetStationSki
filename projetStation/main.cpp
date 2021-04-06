@@ -9,6 +9,9 @@
 #include <queue>
 #include <utility>
 #include <limits>
+#include <windows.h>
+
+
 
 
 int main()
@@ -16,7 +19,7 @@ int main()
 
     Graphe Station("Graphe.txt");
 
-    Station.interface(); // Interface utilisateur
+    Station.interface0(); // Interface utilisateur
 
     return 0;
 }
