@@ -34,8 +34,6 @@
 		</Compiler>
 		<Unit filename="Arcs.cpp" />
 		<Unit filename="Arcs.h" />
-		<Unit filename="Console.cpp" />
-		<Unit filename="Console.h" />
 		<Unit filename="Graphe.cpp" />
 		<Unit filename="Graphe.h" />
 		<Unit filename="Sommet.cpp" />
