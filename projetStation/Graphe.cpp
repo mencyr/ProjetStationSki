@@ -92,9 +92,9 @@ void Graphe::afficherTrajet()
     std::cout<<"     Mon choix :  ";
     std::cin>> numero;
     numero=numero-1;
-    std::cout<<"        Le point de depart du trajet est:";
+    std::cout<<"        Le sommet de depart du trajet est : ";
     std::cout<< m_listeArcs[numero]->getDepart() << std::endl;
-    std::cout<<"        Le point d'arrivee du trajet est:";
+    std::cout<<"        Le sommet d'arrivee du trajet est : ";
     std::cout<< m_listeArcs[numero]->getArrivee() << std::endl;
     std::cout<<std::endl;
 }
