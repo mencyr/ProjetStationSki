@@ -97,9 +97,6 @@ void Graphe::afficherTrajet()
     std::cout<<"        Le point d'arrivee du trajet est:";
     std::cout<< m_listeArcs[numero]->getArrivee() << std::endl;
     std::cout<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<std::endl;
-
 }
 
 
@@ -116,23 +113,20 @@ void Graphe::afficherVoisins()
     {
         if(numero==m_listeArcs[i]->getDepart())
         {
-            std::cout<<"       => Un des trajets qui part du point numero  "<< numero+1 <<"  est:  ";
+            std::cout<<"       => Un des trajets qui part du point numero "<< numero+1 <<" est: ";
             std::cout<<m_listeArcs[i]->getNomTrajet()<<std::endl;
             std::cout<<"    Le type du trajet est ";
-            std::cout<<m_listeArcs[i]->getType()<<std::endl;
+            std::cout<<m_listeArcs[i]->getType()<< "| Il arrive au sommet : "<< m_listeArcs[i]->getArrivee()<< std::endl;
         }
 
         if(numero==m_listeArcs[i]->getArrivee())
-        {   std::cout<<"       => Un des trajets qui arrive au point numero  "<< numero+1 <<"  est:  ";
+        {   std::cout<<"       => Un des trajets qui arrive au point numero "<< numero+1 <<" est: ";
             std::cout<<m_listeArcs[i]->getNomTrajet()<<std::endl;
             std::cout<<"    Le type du trajet est ";
-            std::cout<<m_listeArcs[i]->getType()<<std::endl;
+            std::cout<<m_listeArcs[i]->getType()<< "| Il part du sommet : "<< m_listeArcs[i]->getDepart()<<std::endl;
         }
     }
     std::cout<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<std::endl;
-
 }
 
 

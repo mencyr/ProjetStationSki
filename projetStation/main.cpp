@@ -121,6 +121,7 @@ void interface0()
 std::vector<bool> interface4()
 {
         int preferences=-1;
+
         std::cout<<std::endl;
         std::cout<<"          CHOISIR SES PREFERENCES"<<std::endl;
        // std::cout<<std::endl;
@@ -154,36 +155,37 @@ std::vector<bool> interface4()
 
         std::cout<<"  Entrer le numero des trajets que vous ne souhaitez pas emprunter"<<std::endl;
 
-
-
         std::vector<bool> choix;
         for(int i=0;i<NombreChemin;i++)
         {
             choix.push_back(false);
         }
-
-            while(preferences!=12)
+        while(preferences!=12)
+        {
+            gotoligcol(10,60);
+            std::cout<<"     Votre choix:";
+            std::cin>>preferences;
+            gotoligcol(10,60);
+            std::cout<<"                    ";
+            for(int i=0;i<12;i++)
             {
-                gotoligcol(10,60);
-                std::cout<<"     Votre choix:";
-                std::cin>>preferences;
-
-
-                for(int i=0;i<12;i++)
+                if(preferences==i)
                 {
-                    if(preferences==i)
+                    if(!choix[i])
                     {
-                    gotoligcol(i+2,3);
-                    std::cout<<"X";
-                    choix[i]=true;
+                        gotoligcol(i+2,17);
+                        std::cout<<"X";
+                        choix[i]=true;
+                    }
+                    else
+                    {
+                        gotoligcol(i+2,17);
+                        std::cout<<" ";
+                        choix[i]=false;
                     }
                 }
             }
-
-
-
-
-
+        }
  return choix;
 }
 
