@@ -10,7 +10,7 @@
 #include <cmath>
 
 Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive,int altd, int alta)
-:m_numTrajet(num),m_nomTrajet(nom),m_type(type)//,m_duree()
+:m_numTrajet(num),m_nomTrajet(nom),m_type(type)
 {
     if (m_type=="N")
     {
@@ -86,7 +86,6 @@ Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive,int al
             m_duree=30;
         }
     }
-    std::cout << m_numTrajet +1 << " " << m_duree << std::endl;
 
 
     m_SommetAdjacent.first=depart;
@@ -101,12 +100,11 @@ Arcs::~Arcs()
 float Arcs::getDuree()
 {
     return m_duree;
-
+}
 
 
 int Arcs::getDepart()
 {
-
     return m_SommetAdjacent.first;
 }
 
@@ -125,3 +123,4 @@ std::string Arcs::getType()
 {
     return m_type;
 }
+

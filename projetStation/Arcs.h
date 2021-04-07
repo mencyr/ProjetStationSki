@@ -14,7 +14,7 @@
 class Arcs
 {
     private:
-        int m_num;
+        int m_numTrajet;
         std::string m_nomTrajet;
         std::string m_type;
         float m_duree;

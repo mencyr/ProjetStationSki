@@ -28,8 +28,6 @@ class Graphe
         void afficherVoisins();
         std::vector<std::pair<int,float>> dijkstra(int depart);
         void afficherPred(std::vector<std::pair<int,float>> pred,int depart,int fin);
-        int interface0();
-        std::vector<bool> interface4();
 
 };
 
