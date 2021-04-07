@@ -178,7 +178,7 @@ std::vector<std::pair<int,float>> Graphe::dijkstra(int depart)
 }
 
 
-void Graphe::afficherPred(std::vector<std::pair<int,float>> pred,int depart,int fin)
+void Graphe::afficherPredDijkstra(std::vector<std::pair<int,float>> pred,int fin)
 {
     float numpred;   ///AFFICHAGE GRACE AUX VECTEUR DE PREDESSECEUR
     float poids=m_listeSommet[fin]->getpoids(pred[fin].first);
@@ -211,4 +211,58 @@ void Graphe::afficherPred(std::vector<std::pair<int,float>> pred,int depart,int 
     std::cout << " = ";
     std::cout << ctp;
 
+}
+
+std::vector<int> Graphe::BFS(int depart)
+{
+    std::vector<int> pred;       //predecesseur
+    int num;
+    int taillesucc;
+    std::vector<Sommet*> succ; //successeur
+    std::vector<std::pair<Sommet*,Arcs*>> succ2;
+    std::vector<bool> marquage; //notera false si il a déjà été trouvé true sinon
+    std::queue<int> file;       //file indispensabe pour le programme
+    for(int i=0;i<m_ordre;i++)   //initialisation
+    {
+        pred.push_back(-1);
+        marquage.push_back(false);
+    }
+    file.push(depart);          /// au rang 0
+    marquage[depart]=true;       //le sommet est decouvert il devient "noir"
+    do                          ///au rang n
+    {
+        num = file.front(); //transfert du haut de la pile dans la variable num
+        file.pop();
+        succ2=m_listeSommet[num]->getVectAdjda();   //succ prend les successeur
+        for(auto elem :succ2)
+        {
+            succ.push_back(elem.first);
+        }
+        for(int i=0;i<succ.size();i++)
+        {
+            if(marquage[succ[i]->getnbr()]==0)
+            {
+                marquage[succ[i]->getnbr()]=true;     //le sommet est decouvert il devient "noir"
+                file.push(succ[i]->getnbr());          //num devient le nouveau predecesseur de i
+                pred[succ[i]->getnbr()] = num;
+            }
+        }
+    }while(!file.empty());
+    return pred;
+}
+
+void Graphe::afficherPredBFS(std::vector<int> pred)
+{
+    int numpred;
+    for(int i=0;i<m_ordre;i++)  //pour tout les sommets
+    {
+        std::cout << i ;
+        numpred=pred[i];
+        while(numpred!=-1)   //refaire le chemin fait dans la fonction de recherche BFS
+        {
+            std::cout << " <-- "<< numpred;
+            numpred=pred[numpred];
+        }
+        std::cout << std::endl;
+    }
 }

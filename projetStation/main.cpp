@@ -102,18 +102,23 @@ void interface0()
             break;
 
         case 3:
-            Station.afficherPred(Station.dijkstra(DF.first),DF.first,DF.second);
+            Station.afficherPredBFS(Station.afficherPredBFS(DF.first));
+            std::cout << std::endl << std::endl;
+            Station.afficherPredDijkstra(Station.dijkstra(DF.first),DF.second);
+            interface0();
             break;
 
         case 4:
-            Station.afficherPred(Station.dijkstra(DF.first),DF.first,DF.second);
+            Station.afficherPredBFS(Station.afficherPredBFS(DF.first));
+            std::cout << std::endl << std::endl;
+            Station.afficherPredDijkstra(Station.dijkstra(DF.first),DF.second);
             interface0();
             break;
 
 
         default:
             system("CLS");
-            interface0();
+
             break;
     }
 }
