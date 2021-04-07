@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1617732242 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.cpp
+1617786201 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.cpp
 	"Arcs.h"
 	<iostream>
 	<vector>
@@ -10,7 +10,7 @@
 	<limits>
 	<cmath>
 
-1617732242 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.h
+1617786233 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.h
 	<iostream>
 	<vector>
 	<string>
@@ -19,7 +19,7 @@
 	<utility>
 	<limits>
 
-1617718987 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\sommet.cpp
+1617786536 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\sommet.cpp
 	"Sommet.h"
 	<iostream>
 	<vector>
@@ -39,7 +39,7 @@
 	<utility>
 	<limits>
 
-1617726252 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\main.cpp
+1617786406 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\main.cpp
 	"Graphe.h"
 	"Sommet.h"
 	"Arcs.h"
@@ -50,8 +50,9 @@
 	<queue>
 	<utility>
 	<limits>
+	<windows.h>
 
-1617725764 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.h
+1617786348 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.h
 	"Sommet.h"
 	"Arcs.h"
 	<iostream>
@@ -62,7 +63,7 @@
 	<utility>
 	<limits>
 
-1617732243 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.cpp
+1617786280 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.cpp
 	"Graphe.h"
 	<iostream>
 	<vector>
@@ -71,6 +72,7 @@
 	<queue>
 	<utility>
 	<limits>
+	<windows.h>
 
 1617640137 source:c:\users\vdrcy\documents\---------------inge 2---------------\s2\projet piscine\projetstationski\projetstationski\projetstation\arcs.cpp
 	"Arcs.h"
@@ -143,4 +145,12 @@
 	<queue>
 	<utility>
 	<limits>
+
+1617786027 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+
+1617786027 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\console.h
+	<iostream>
 
