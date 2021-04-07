@@ -8,10 +8,21 @@
 #include <utility>
 #include <limits>
 
+#define NombreChemin 12
 
-Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FICHIER
+Graphe::Graphe(std::string nom,std::vector<bool> choix)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FICHIER
 {
-    int w,x,y,z;
+    int w,x,y,z,ctp;
+    std::vector<std::string> type{"N","R","B","V","KL","SURF","TPH","TC","TSD","TS","TK","BUS"};
+    std::vector<std::string> elimination;
+    for(int i=0;i<NombreChemin;i++)
+    {
+        if(choix[i])
+        {
+            elimination.push_back(type[i]);
+        }
+    }
+    int tailleElimation= elimination.size(); //necessaire si l'on veut eviter les warnings
     std::string passage, passage2;
     std::vector<std::pair<int,int>> passage3;
     std::ifstream fichier(nom);
@@ -34,11 +45,20 @@ Graphe::Graphe(std::string nom)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FIC
         }
         for(int i=0;i<m_taille;i++)   //affectation des adjacences
         {
+            ctp=0;
             std::cout << i + 1<< " ";  ///temporaire
             x=passage3[i].first;
             y=passage3[i].second;
             std::cout << x + 1<< " " <<  y + 1 << std::endl;  ///temporaire
-            m_listeSommet[x]->setAdjacence(m_listeSommet[y],m_listeArcs[i]);
+            for(int j=0;j<tailleElimation;j++)
+            {
+                if(elimination[j]==m_listeArcs[i]->getType())
+                {
+                    ctp++;
+                }
+            }
+            if(ctp==0)
+                m_listeSommet[x]->setAdjacence(m_listeSommet[y],m_listeArcs[i]);
         }
     }
 }
@@ -74,77 +94,80 @@ auto comparaison = [](std::pair<int,int> Pair1, std::pair<int,int> Pair2)
     return Pair2.second < Pair1.second;   //Fonction de comparaison
 };
 
-std::vector<int> Graphe::dijkstra(int depart)
+std::vector<std::pair<int,float>> Graphe::dijkstra(int depart)
 {
-    std::vector<int> pred;
-    std::pair<int,int> passageA;   //Declaration pair de passage
+    std::vector<std::pair<int,float>> pred;
+    std::pair<int,float> passageA;   //Declaration pair de passage
     std::vector<bool> marquage;
     std::vector<float> distance;
     std::priority_queue<std::pair<int,float>,std::vector<std::pair<int,float>>, decltype(comparaison)> Queueue(comparaison);
     //declaration de la pirority queue qui prend La fonction de comparaison
     for(int i=0;i<m_ordre;i++)   //initialisation
     {
-        pred.push_back(-1);
+        pred.push_back(std::make_pair(-1,0));
         distance.push_back(1000);   //distance infini
         marquage.push_back(false);  //sommet non découvert
     }
     distance[depart]=0;   //Sauf pour le premier sommet choisis en parametre du protoype
-    marquage[depart]=true;
     Queueue.push(std::make_pair(depart,distance[depart]));
     while(!Queueue.empty())
     {
         passageA.first = Queueue.top().first;   //Pair de passage
         passageA.second = Queueue.top().second;
         Queueue.pop();    //on pop la queue
-        if(marquage[passageA.first])   //si le soumet dans la paire de passage est marqué
-        {
-            marquage[passageA.first] = true;
         for(auto elem : m_listeSommet[passageA.first]->getVectAdjda()) // boucle des tout les adjacents
         {
             if(marquage[elem.first->getnbr()]== false)   //si le sommet n'est pas marqué
             {
                 marquage[elem.first->getnbr()] = true;   //Marquage du sommet
-                if(distance[elem.first->getnbr()] < elem.second->getDuree() + distance[m_listeSommet[passageA.first]->getnbr()])
+                if(distance[elem.first->getnbr()] > elem.second->getDuree() + distance[m_listeSommet[passageA.first]->getnbr()])
                 {       //si la nouvelle distance est plus petite que la derniere on remplace
-                distance[elem.first->getnbr()] = elem.second->getDuree() + distance[ m_listeSommet[passageA.first]->getnbr()];
+                    distance[elem.first->getnbr()] = elem.second->getDuree() + distance[ m_listeSommet[passageA.first]->getnbr()];
+                    Queueue.push(std::make_pair(elem.first->getnbr(),distance[elem.first->getnbr()]));   //push dans la queue
+                    pred[elem.first->getnbr()].first = passageA.first;
+                    pred[elem.first->getnbr()].second = elem.second->getDuree();
+                    // vecteur de predesseur qui servira pour l'afichage
                 }
-                Queueue.push(std::make_pair(elem.first->getnbr(),distance[elem.first->getnbr()]));   //push dans la queue
-                pred[elem.first->getnbr()] = m_listeSommet[passageA.first]->getnbr();
-                // vecteur de predesseur qui servira pour l'afichage
             }
-        }
         }
     }
     return pred;
 }
 
 
-void Graphe::afficherPred(std::vector<int> pred,int depart,int fin)
+void Graphe::afficherPred(std::vector<std::pair<int,float>> pred,int depart,int fin)
 {
+    for(int i=0;i<m_ordre;i++)
+    {
+        std::cout << i +1<< " : " << pred[i].first+1 << " " <<  pred[i].second << std::endl;
+    }
     float numpred;   ///AFFICHAGE GRACE AUX VECTEUR DE PREDESSECEUR
-    float poids=m_listeSommet[fin]->getpoids(pred[fin]);
+    float poids=m_listeSommet[fin]->getpoids(pred[fin].first);
     std::cout << std::endl;
-    std::cout << fin ;
-    numpred=pred[fin];
+    std::cout << fin +1;
+    numpred=pred[fin].first;
     while(numpred!=-1)   //affichage du chemin  //pour les deux boucles d'affichages on utilise le vecteur de pred
     {
-        std::cout << " <-- "<< numpred;
-        numpred=pred[numpred];
+        std::cout << " <-- "<< numpred+1;
+        numpred=pred[numpred].first;
     }
     std::cout << std::endl;
-    numpred=fin;   //affichage des poids
-    float ctp=0;    //affiche la distance totale
+    numpred=pred[fin].first;   //affichage des poids
+    float numpoids=pred[fin].second;
     bool aff=false;
-    while(numpred!=depart)
+    float ctp=0;
+    while(numpred!=-1)
     {
         if(aff)
         {
         std::cout << " + ";
         }              //affiche chaque distance
         aff = true;
-        std::cout << m_listeSommet[numpred]->getpoids(pred[numpred]);
-        ctp+= m_listeSommet[numpred]->getpoids(pred[numpred]);
-        numpred = pred[numpred];
+        std::cout << numpoids;
+        ctp+=numpoids;
+        poids = numpred;
+        numpred=pred[numpred].first;
+        numpoids=pred[poids].second;
     }
     std::cout << " = ";
     std::cout << ctp;

@@ -19,13 +19,13 @@ class Graphe
         std::vector<Arcs *> m_listeArcs;
         int m_ordre,m_taille;
     public:
-        Graphe(std::string nom);
+        Graphe(std::string nom,std::vector<bool> choix);
         ~Graphe();
 
         void afficherTrajet();
         void afficherVoisins();
-        std::vector<int> dijkstra(int depart);
-        void afficherPred(std::vector<int> pred,int depart,int fin);
+        std::vector<std::pair<int,float>> dijkstra(int depart);
+        void afficherPred(std::vector<std::pair<int,float>> pred,int depart,int fin);
 };
 
 #endif // GRAPHE_H_INCLUDED

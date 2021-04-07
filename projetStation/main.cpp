@@ -10,11 +10,15 @@
 #include <utility>
 #include <limits>
 
+#define NombreChemin 12
 
 int main()
 {
-    Graphe Station("Graphe.txt");
-    std::vector<int> t;
-    t= Station.dijkstra(1);
+    std::vector<bool> choix;
+    for(int i=0;i<NombreChemin;i++)
+        choix.push_back(false);
+    choix[0]=true;
+    Graphe Station("Graphe.txt",choix);
+    Station.afficherPred(Station.dijkstra(10),10,0);
     return 0;
 }

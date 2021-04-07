@@ -24,7 +24,7 @@ class Sommet
         int getnbr();
         std::vector<std::pair<Sommet*,Arcs *>> getVectAdjda();
         void setAdjacence(Sommet * som,Arcs * arc);
-        int getpoids(int num);
+        float getpoids(float num);
         int GetAlt();
 };
 

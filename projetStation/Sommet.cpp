@@ -34,7 +34,7 @@ std::vector<std::pair<Sommet*,Arcs *>> Sommet::getVectAdjda()
     return m_adjacent;    // getteur du vecteur de pair, le conteneur d'adjacent
 }
 
-int Sommet::getpoids(int num)
+float Sommet::getpoids(float num)
 {
     for(auto elem : m_adjacent)
     {

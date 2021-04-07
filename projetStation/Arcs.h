@@ -22,6 +22,7 @@ class Arcs
         ~Arcs();
 
         float getDuree();
+        std::string getType();
 };
 
 #endif // ARCS_H_INCLUDED

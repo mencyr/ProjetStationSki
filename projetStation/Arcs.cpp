@@ -86,7 +86,7 @@ Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive,int al
             m_duree=30;
         }
     }
-    std::cout << m_duree << std::endl;
+    std::cout << m_numTrajet +1 << " " << m_duree << std::endl;
 
 
     m_SommetAdjacent.first=depart;
@@ -101,4 +101,9 @@ Arcs::~Arcs()
 float Arcs::getDuree()
 {
     return m_duree;
+}
+
+std::string Arcs::getType()
+{
+    return m_type;
 }
