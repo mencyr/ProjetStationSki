@@ -1,5 +1,6 @@
 #include "Graphe.h"
 
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -7,6 +8,22 @@
 #include <queue>
 #include <utility>
 #include <limits>
+#include <windows.h>
+
+#define NombreChemin 12
+
+
+
+void gotoligcol( int lig, int col )
+{
+// ressources
+COORD mycoord;
+
+mycoord.X = col;
+mycoord.Y = lig;
+SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
+
 
 #define NombreChemin 12
 
@@ -77,15 +94,134 @@ Graphe::~Graphe()    ///DECONSTRUCTEURS DU GRAPHE
 }
 
 
+
+
 void Graphe::afficherTrajet()
 {
+
+    int numero;
+
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<< "    Choisir un numero de trajet pour savoir son point d'arrivee et son point de depart"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"     Mon choix :  ";
+    std::cin>> numero;
+    numero=numero-1;
+
+
+
+    std::cout<<"        Le point de depart du trajet est:";
+    std::cout<< m_listeArcs[numero]->getDepart() << std::endl;
+    std::cout<<"        Le point d'arrivee du trajet est:";
+    std::cout<< m_listeArcs[numero]->getArrivee() << std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
 
 }
 
 
 void Graphe::afficherVoisins()
 {
+    int numero;
 
+    std::cout<<"Choisir un point pour connaitre les trajets qui y partent et qui y arrivent"<<std::endl;
+    std::cout<<"Mon choix :  ";
+    std::cin>>numero;
+    numero=numero-1;
+
+    for(int i=0;i< m_taille;i++)
+    {
+        if(numero==m_listeArcs[i]->getDepart())
+        {
+            std::cout<<"       => Un des trajets qui part du point numero  "<< numero+1 <<"  est:  ";
+            std::cout<<m_listeArcs[i]->getNomTrajet()<<std::endl;
+            std::cout<<"    Le type du trajet est ";
+            std::cout<<m_listeArcs[i]->getType()<<std::endl;
+        }
+
+        if(numero==m_listeArcs[i]->getArrivee())
+        {   std::cout<<"       => Un des trajets qui arrive au point numero  "<< numero+1 <<"  est:  ";
+            std::cout<<m_listeArcs[i]->getNomTrajet()<<std::endl;
+            std::cout<<"    Le type du trajet est ";
+            std::cout<<m_listeArcs[i]->getType()<<std::endl;
+        }
+    }
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+}
+
+
+std::vector<bool> Graphe::interface4()
+{
+        int preferences=-1;
+        std::cout<<std::endl;
+        std::cout<<"          CHOISIR SES PREFERENCES"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    0.   Pistes Noires"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    1.   Pistes Rouges"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    2.   Pistes Bleues"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    3.   Pistes Vertes"<<std::endl;
+     //   std::cout<<std::endl;
+        std::cout<<"                    4.   Piste de Kilometre Lance"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    5.   Domaine reserve au Surf"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    6.   Telepherique"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    7.   Telecabine"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    8.   Telesiege debrayable"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    9.   Telesiege"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    10.  Teleski"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    11.  Navette Bus"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    12.  J'ai finis"<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<std::endl;
+
+        std::cout<<"  Entrer le numero des trajets que vous ne souhaitez pas emprunter"<<std::endl;
+
+
+
+        std::vector<bool> choix;
+        for(int i=0;i<NombreChemin;i++)
+        {
+            choix.push_back(false);
+        }
+
+            while(preferences!=12)
+            {
+                gotoligcol(10,60);
+                std::cout<<"     Votre choix:";
+                std::cin>>preferences;
+
+
+                for(int i=0;i<12;i++)
+                {
+                    if(preferences==i)
+                    {
+                    gotoligcol(i+2,3);
+                    std::cout<<"X";
+                    choix[i]=true;
+                    }
+                }
+            }
+
+
+
+
+
+ return choix;
 }
 
 
@@ -106,7 +242,7 @@ std::vector<std::pair<int,float>> Graphe::dijkstra(int depart)
     {
         pred.push_back(std::make_pair(-1,0));
         distance.push_back(1000);   //distance infini
-        marquage.push_back(false);  //sommet non découvert
+        marquage.push_back(false);  //sommet non dï¿½couvert
     }
     distance[depart]=0;   //Sauf pour le premier sommet choisis en parametre du protoype
     Queueue.push(std::make_pair(depart,distance[depart]));
@@ -117,7 +253,7 @@ std::vector<std::pair<int,float>> Graphe::dijkstra(int depart)
         Queueue.pop();    //on pop la queue
         for(auto elem : m_listeSommet[passageA.first]->getVectAdjda()) // boucle des tout les adjacents
         {
-            if(marquage[elem.first->getnbr()]== false)   //si le sommet n'est pas marqué
+            if(marquage[elem.first->getnbr()]== false)   //si le sommet n'est pas marquï¿½
             {
                 marquage[elem.first->getnbr()] = true;   //Marquage du sommet
                 if(distance[elem.first->getnbr()] > elem.second->getDuree() + distance[m_listeSommet[passageA.first]->getnbr()])
@@ -171,5 +307,63 @@ void Graphe::afficherPred(std::vector<std::pair<int,float>> pred,int depart,int 
     }
     std::cout << " = ";
     std::cout << ctp;
+
+}
+
+
+int Graphe::interface0()
+{
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"       INTERFACE UTILISATEUR"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"    1.    Choisir un numero de trajet pour savoir son point d'arrivee et son point de depart"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"    2.    Choisir un point pour connaitre les trajets qui y partent et qui y arrivent"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"    3.    Connaitre l'itineraire le plus rapide entre deux points de la station"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"    4.    Connaitre le chemin le plus rapide en fonction de mes preferences"<<std::endl;
+    std::cout<<std::endl;
+
+
+    int choix;
+    std::cout<<std::endl;
+    std::cout<<"   Saisir votre choix"<<std::endl;
+    std::cin>>choix;
+
+    switch(choix)
+    {
+        case 1:
+            system("CLS");
+            afficherTrajet();
+            interface0();
+            break;
+
+        case 2:
+            system("CLS");
+            afficherVoisins();
+            interface0();
+            break;
+
+        case 3:
+            system("CLS");
+            break;
+
+        case 4:
+            system("CLS");
+            interface4();
+            break;
+
+
+        default:
+            system("CLS");
+            interface0();
+            break;
+    }
+
+    return 0;
 
 }

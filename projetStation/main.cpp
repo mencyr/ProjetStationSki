@@ -9,6 +9,9 @@
 #include <queue>
 #include <utility>
 #include <limits>
+#include <windows.h>
+
+
 
 #define NombreChemin 12
 
@@ -22,3 +25,6 @@ int main()
     Station.afficherPred(Station.dijkstra(10),10,0);
     return 0;
 }
+
+
+

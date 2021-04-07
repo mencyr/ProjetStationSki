@@ -101,6 +101,24 @@ Arcs::~Arcs()
 float Arcs::getDuree()
 {
     return m_duree;
+
+
+
+int Arcs::getDepart()
+{
+
+    return m_SommetAdjacent.first;
+}
+
+int Arcs::getArrivee()
+{
+
+    return m_SommetAdjacent.second;
+}
+
+std::string Arcs::getNomTrajet()
+{
+    return m_nomTrajet;
 }
 
 std::string Arcs::getType()
