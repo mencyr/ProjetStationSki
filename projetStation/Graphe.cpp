@@ -137,63 +137,67 @@ void Graphe::afficherVoisins()
 
 std::vector<bool> Graphe::interface4()
 {
-        int preferences;
+        int preferences=-1;
         std::cout<<std::endl;
         std::cout<<"          CHOISIR SES PREFERENCES"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          0.   Pistes Noires"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          1.   Pistes Rouges"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          2.   Pistes Bleues"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          3.   Pistes Vertes"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          4.   Piste de Kilometre Lance"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          5.   Domaine reserve au Surf"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          6.   Telepherique"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          7.   Telecabine"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          8.   Telesiege debrayable"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          9.   Telesiege"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          10.  Teleski"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"          11.  Navette Bus"<<std::endl;
-        std::cout<<std::endl;
-        std::cout<<"      12.  J'ai finis"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    0.   Pistes Noires"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    1.   Pistes Rouges"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    2.   Pistes Bleues"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    3.   Pistes Vertes"<<std::endl;
+     //   std::cout<<std::endl;
+        std::cout<<"                    4.   Piste de Kilometre Lance"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    5.   Domaine reserve au Surf"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    6.   Telepherique"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    7.   Telecabine"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    8.   Telesiege debrayable"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    9.   Telesiege"<<std::endl;
+       // std::cout<<std::endl;
+        std::cout<<"                    10.  Teleski"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    11.  Navette Bus"<<std::endl;
+      //  std::cout<<std::endl;
+        std::cout<<"                    12.  J'ai finis"<<std::endl;
         std::cout<<std::endl;
         std::cout<<std::endl;
 
         std::cout<<"  Entrer le numero des trajets que vous ne souhaitez pas emprunter"<<std::endl;
-        std::cout<< "Votre choix:";
-        std::cin>>preferences;
+
+
 
         std::vector<bool> choix;
-        for(int i=0;NombreChemin;i++)
+        for(int i=0;i<NombreChemin;i++)
         {
             choix.push_back(false);
         }
 
-        while(preferences!=12)
-        {
-
-           for(int i=0;i<12;i++)
-           {
-               gotoligcol(i+1,5);
-                std::cout<<"X";
-               if(preferences==i)
-              {
-                choix[i]=true;
-              }
-           }
+            while(preferences!=12)
+            {
+                gotoligcol(10,60);
+                std::cout<<"     Votre choix:";
+                std::cin>>preferences;
 
 
-        }
+                for(int i=0;i<12;i++)
+                {
+                    if(preferences==i)
+                    {
+                    gotoligcol(i+2,3);
+                    std::cout<<"X";
+                    choix[i]=true;
+                    }
+                }
+            }
+
+
 
 
 
