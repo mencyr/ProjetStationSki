@@ -254,13 +254,15 @@ std::vector<int> Graphe::BFS(int depart)
 void Graphe::afficherPredBFS(std::vector<int> pred)
 {
     int numpred;
+    std::cout << "Voici tout les chemins pour rejoindre les autres sommets :" << std::endl << std::endl;
+
     for(int i=0;i<m_ordre;i++)  //pour tout les sommets
     {
-        std::cout << i ;
+        std::cout << i +1;
         numpred=pred[i];
         while(numpred!=-1)   //refaire le chemin fait dans la fonction de recherche BFS
         {
-            std::cout << " <-- "<< numpred;
+            std::cout << " <-- "<< numpred+1;
             numpred=pred[numpred];
         }
         std::cout << std::endl;
