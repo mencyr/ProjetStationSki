@@ -10,6 +10,7 @@
 #include <utility>
 #include <limits>
 #include <windows.h>
+#include <ctime>
 
 #define NombreChemin 12
 
@@ -18,7 +19,8 @@ std::vector<bool> interface4();
 std::pair<int,int> interface34();
 
 
-void gotoligcol( int lig, int col )
+
+void gotoligcol( int lig, int col ) ///GOTOLIGCOL
 {
 // ressources
 COORD mycoord;
@@ -29,9 +31,41 @@ SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 }
 
 
+void heureEtDate()  ///HEURE ET DATE
+{
+    time_t secondes;
+    struct tm instant;
+    time(&secondes);
+    instant=*localtime(&secondes);
+    gotoligcol(0,94);
+    std::cout<<"_________________________";
+    gotoligcol(1,93);
+    std::cout<<"|                         |";
+    gotoligcol(2,93);
+    std::cout<<"|                         |";
+    gotoligcol(3,93);
+    std::cout<<"|                         |";
+    gotoligcol(3,94);
+    std::cout<<"_________________________";
+    gotoligcol(1,96);
+    std::cout<<"DATE ET HEURE ACTUELLE ";
+    gotoligcol(2,100);
+    printf("%d/%d ; %d:%d\n", instant.tm_mday+1, instant.tm_mon+1, instant.tm_hour, instant.tm_min);
+    gotoligcol(0,0);
+
+
+
+}
+
+
 int main()
 {
+    ///HEURE ET DATE
+    heureEtDate();
+
+    ///INTERFACE
     interface0();
+
     return 0;
 }
 
@@ -103,6 +137,7 @@ void interface0()
 
         case 3:
             Station.afficherPred(Station.dijkstra(DF.first),DF.first,DF.second);
+            interface0();
             break;
 
         case 4:

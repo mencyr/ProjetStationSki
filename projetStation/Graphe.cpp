@@ -91,12 +91,21 @@ void Graphe::afficherTrajet()
     std::cout<<std::endl;
     std::cout<<"     Mon choix :  ";
     std::cin>> numero;
-    numero=numero-1;
+    if( 1<=numero && 95>=numero)
+    {
+        numero=numero-1;
     std::cout<<"        Le sommet de depart du trajet est : ";
     std::cout<< m_listeArcs[numero]->getDepart() << std::endl;
     std::cout<<"        Le sommet d'arrivee du trajet est : ";
     std::cout<< m_listeArcs[numero]->getArrivee() << std::endl;
     std::cout<<std::endl;
+    } else
+        {
+            std::cout<<std::endl;
+            std::cout<< "  veuillez entrer un nombre valide"<<std::endl;
+            //afficherTrajet();
+        }
+
 }
 
 
@@ -107,6 +116,9 @@ void Graphe::afficherVoisins()
     std::cout<<"Choisir un point pour connaitre les trajets qui y partent et qui y arrivent"<<std::endl;
     std::cout<<"Mon choix :  ";
     std::cin>>numero;
+    if( 1<=numero && 37>=numero)
+    {
+
     numero=numero-1;
 
     for(int i=0;i< m_taille;i++)
@@ -127,8 +139,12 @@ void Graphe::afficherVoisins()
         }
     }
     std::cout<<std::endl;
+    }   else
+        {
+        std::cout<<std::endl;
+        std::cout<< "  veuillez entrer un nombre valide"<<std::endl;
+        }
 }
-
 
 
 
