@@ -11,9 +11,19 @@
 
 #define NombreChemin 12
 
+void gotoligcol( int lig, int col )
+{
+// ressources
+COORD mycoord;
+
+mycoord.X = col;
+mycoord.Y = lig;
+SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
+
 Graphe::Graphe(std::string nom,std::vector<bool> choix)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FICHIER
 {
-    int w,x,y,z,ctp;
+    int w,x,y,z,h,ctp;
     std::vector<std::string> type{"N","R","B","V","KL","SURF","TPH","TC","TSD","TS","TK","BUS"};
     std::vector<std::string> elimination;
     for(int i=0;i<NombreChemin;i++)
@@ -40,9 +50,9 @@ Graphe::Graphe(std::string nom,std::vector<bool> choix)  ///CONSTRUCTEUR DU GRAP
         m_taille =w;
         for(int i=0;i<w;i++)
         {
-            fichier >> x >> passage >> passage2 >> y >> z;
+            fichier >> x >> passage >> passage2 >> y >> z >> h;
             passage3.push_back(std::make_pair(y-1,z-1));
-            m_listeArcs.push_back(new Arcs(i,passage,passage2,y-1,z-1,m_listeSommet[y-1]->GetAlt(),m_listeSommet[z-1]->GetAlt()));
+            m_listeArcs.push_back(new Arcs(i,passage,passage2,y-1,z-1,m_listeSommet[y-1]->GetAlt(),m_listeSommet[z-1]->GetAlt(),h));
         }
         for(int i=0;i<m_taille;i++)   //affectation des adjacences
         {
@@ -103,7 +113,6 @@ void Graphe::afficherTrajet()
 void Graphe::afficherVoisins()
 {
     int numero;
-
     std::cout<<"Choisir un point pour connaitre les trajets qui y partent et qui y arrivent"<<std::endl;
     std::cout<<"Mon choix :  ";
     std::cin>>numero;
@@ -217,7 +226,6 @@ std::vector<int> Graphe::BFS(int depart)
 {
     std::vector<int> pred;       //predecesseur
     int num;
-    int taillesucc;
     std::vector<Sommet*> succ; //successeur
     std::vector<std::pair<Sommet*,Arcs*>> succ2;
     std::vector<bool> marquage; //notera false si il a déjà été trouvé true sinon
@@ -251,7 +259,7 @@ std::vector<int> Graphe::BFS(int depart)
     return pred;
 }
 
-void Graphe::afficherPredBFS(std::vector<int> pred)
+void Graphe::afficherPredBFS(std::vector<int> pred,int fin)
 {
     int numpred;
     std::cout << "Voici tout les chemins pour rejoindre les autres sommets :" << std::endl << std::endl;
@@ -266,5 +274,127 @@ void Graphe::afficherPredBFS(std::vector<int> pred)
             numpred=pred[numpred];
         }
         std::cout << std::endl;
+    }
+
+}
+
+void Graphe::reseau()
+{
+    int ctp1=0,ctp2=0;
+    int depart, fin;
+    std::vector<bool> choix {false,false,false};
+    system("CLS");
+    std::cout<<std::endl;
+    std::cout<<"         Dans quel village vous vous situez ?"<<std::endl<<std::endl;
+    std::cout<<"                    0.   Arcs 1600"<<std::endl;
+    std::cout<<"                    1.   Arcs 1800"<<std::endl;
+    std::cout<<"                    2.   Arcs 2000"<<std::endl;
+    std::cout<<"                    3.   Confirmez votre choix"<<std::endl;
+    while(depart!=3)
+        {
+            gotoligcol(4,60);
+            std::cout<<"     Votre choix:";
+            std::cin>>depart;
+            gotoligcol(4,60);
+            std::cout<<"                    ";
+            for(int i=0;i<3;i++)
+            {
+                if(depart==i)
+                {
+                    for(int i=0;i<3;i++)
+                    {
+                        gotoligcol(i+3,17);
+                        std::cout<<" ";
+                        choix[i]=false;
+                    }
+                    if(!choix[i])
+                    {
+                        gotoligcol(i+3,17);
+                        std::cout<<"X";
+                        choix[i]=true;
+                    }
+                }
+            }
+        }
+    if(depart==0)
+        depart=29;
+    if(depart==1)
+        depart=35;
+    if(depart==2)
+        depart=6;
+    system("CLS");
+    for(int i=0;i<3;i++)
+    {
+        if(choix[i])
+        {
+            ctp1++;
+        }
+    }
+    if(ctp1==0)
+        reseau();
+    std::vector<bool> choix2 {false,false,false};
+    std::cout<<std::endl;
+    std::cout<<"         Ou est ce que vous voulez aller ?"<<std::endl<<std::endl;
+    std::cout<<"                    0.   Aiguille-rouge"<<std::endl;
+    std::cout<<"                    1.   Arpette"<<std::endl;
+    std::cout<<"                    2.   col-de-la-chal"<<std::endl;
+    std::cout<<"                    3.   Confirmez votre choix"<<std::endl;
+    while(fin!=3)
+        {
+            gotoligcol(4,60);
+            std::cout<<"     Votre choix:";
+            std::cin>>fin;
+            gotoligcol(4,60);
+            std::cout<<"                    ";
+            for(int i=0;i<3;i++)
+            {
+                if(fin==i)
+                {
+                    for(int i=0;i<3;i++)
+                    {
+                        gotoligcol(i+3,17);
+                        std::cout<<" ";
+                        choix2[i]=false;
+                    }
+                    if(!choix2[i])
+                    {
+                        gotoligcol(i+3,17);
+                        std::cout<<"X";
+                        choix2[i]=true;
+                    }
+                }
+            }
+        }
+    if(fin==0)
+        fin=4;
+    if(fin==1)
+        fin=14;
+    if(fin==2)
+        fin=25;
+    system("CLS");
+    for(int i=0;i<3;i++)
+    {
+        if(choix2[i])
+        {
+            ctp2++;
+        }
+    }
+    if(ctp2==0)
+        reseau();
+    m_SourcePuit.first=m_listeSommet[depart];
+    m_SourcePuit.second=m_listeSommet[fin];
+    for(int i=0;i< m_taille;i++)
+    {
+        if(depart==m_listeArcs[i]->getArrivee())
+        {
+
+        }
+    }
+    for(int i=0;i< m_taille;i++)
+    {
+        if(fin==m_listeArcs[i]->getDepart())
+        {
+
+        }
     }
 }

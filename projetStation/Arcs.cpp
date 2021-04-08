@@ -9,8 +9,8 @@
 #include <limits>
 #include <cmath>
 
-Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive,int altd, int alta)
-:m_numTrajet(num),m_nomTrajet(nom),m_type(type)
+Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive,int altd, int alta,int capa)
+:m_numTrajet(num),m_nomTrajet(nom),m_type(type),m_capacita(capa)
 {
     if (m_type=="N")
     {

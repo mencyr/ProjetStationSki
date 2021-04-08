@@ -18,17 +18,6 @@ std::vector<bool> interface4();
 std::pair<int,int> interface34();
 
 
-void gotoligcol( int lig, int col )
-{
-// ressources
-COORD mycoord;
-
-mycoord.X = col;
-mycoord.Y = lig;
-SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
-}
-
-
 int main()
 {
     interface0();
@@ -53,6 +42,8 @@ void interface0()
     std::cout<<"    3.    Connaitre l'itineraire le plus rapide entre deux points de la station"<<std::endl;
     std::cout<<std::endl;
     std::cout<<"    4.    Connaitre le chemin le plus rapide en fonction de mes preferences"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"    5.    Connaitre le chemin de remonte ideal : "<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"   Saisir votre choix"<<std::endl;
@@ -83,6 +74,11 @@ void interface0()
             choix=interface4();
             DF=interface34();
             break;
+        case 5:
+            system("CLS");
+            for(int i=0;i<NombreChemin;i++)
+                choix.push_back(false);
+            break;
 
         default:
             system("CLS");
@@ -102,20 +98,21 @@ void interface0()
             break;
 
         case 3:
-            Station.afficherPredBFS(Station.BFS(DF.first));
+            Station.afficherPredBFS(Station.BFS(DF.first),DF.second);
             std::cout << std::endl << std::endl;
             Station.afficherPredDijkstra(Station.dijkstra(DF.first),DF.second);
             interface0();
             break;
 
         case 4:
-            Station.afficherPredBFS(Station.BFS(DF.first));
+            Station.afficherPredBFS(Station.BFS(DF.first),DF.second);
             std::cout << std::endl << std::endl;
             Station.afficherPredDijkstra(Station.dijkstra(DF.first),DF.second);
             interface0();
             break;
-
-
+        case 5:
+            Station.reseau();
+            interface0();
         default:
             system("CLS");
 
