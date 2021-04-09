@@ -25,9 +25,10 @@ class Graphe
         Graphe(std::string nom,std::vector<bool> choix);
         ~Graphe();
 
+        std::vector<std::pair<Sommet*,Arcs *>> getSuccesseur(int i);
+
         void afficherTrajet();
         void afficherVoisins();
-        void reseau();
 
         std::vector<std::pair<int,float>> dijkstra(int depart);
         void afficherPredDijkstraAll(std::vector<std::pair<int,float>> pred);
@@ -36,6 +37,9 @@ class Graphe
         std::vector<int> BFS(int depart);
         void afficherPredBFSAll(std::vector<int> pred);
         void afficherPredBFS(std::vector<int> pred,int fin);
+
+        void reseau();
+        void FordFulkerson();
 };
 
 void gotoligcol( int lig, int col );
