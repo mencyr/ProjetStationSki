@@ -24,8 +24,10 @@ class Sommet
         int getnbr();
         std::vector<std::pair<Sommet*,Arcs *>> getVectAdjda();
         void setAdjacence(Sommet * som,Arcs * arc);
+        void resetAdjacence();
         float getpoids(float num);
         int GetAlt();
+        void removeAdjacence(int sommet);
 };
 
 #endif // SOMMET_H_INCLUDED

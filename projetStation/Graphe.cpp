@@ -186,12 +186,53 @@ std::vector<std::pair<int,float>> Graphe::dijkstra(int depart)
     return pred;
 }
 
+void Graphe::afficherPredDijkstraAll(std::vector<std::pair<int,float>> pred)
+{
+    float numpred,numpoids,poids;
+    bool aff=false;
+    float ctp=0;
+    std::cout << std::endl << std::endl;
+    std::cout << std::endl << std::endl;
+    std::cout << "Voici tout les chemins plus courts (en minutes) pour rejoindre les autres sommets :" << std::endl << std::endl;
+    for(int i=0;i<m_ordre;i++)  //pour tout les sommets
+    {
+        std::cout << i +1;
+        numpred=pred[i].first;
+        while(numpred!=-1)   //affichage du chemin  //pour les deux boucles d'affichages on utilise le vecteur de pred
+        {
+            std::cout << " <-- "<< numpred+1;
+            numpred=pred[numpred].first;
+        }
+        std::cout << std::endl;
+        numpred=pred[i].first;   //affichage des poids
+        numpoids=pred[i].second;
+        while(numpred!=-1)
+        {
+            if(aff)
+            {
+                std::cout << " + ";
+            }              //affiche chaque distance
+            aff = true;
+            std::cout << numpoids;
+            ctp+=numpoids;
+            poids = numpred;
+            numpred=pred[numpred].first;
+            numpoids=pred[poids].second;
+        }
+        std::cout << " = ";
+        std::cout << ctp << std::endl;
+        ctp=0;
+        aff=false;
+    }
+    std::cout << std::endl;
+}
 
 void Graphe::afficherPredDijkstra(std::vector<std::pair<int,float>> pred,int fin)
 {
     float numpred;   ///AFFICHAGE GRACE AUX VECTEUR DE PREDESSECEUR
     float poids=m_listeSommet[fin]->getpoids(pred[fin].first);
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
+    std::cout << std::endl << std::endl;
     std::cout << fin +1;
     numpred=pred[fin].first;
     while(numpred!=-1)   //affichage du chemin  //pour les deux boucles d'affichages on utilise le vecteur de pred
@@ -219,7 +260,7 @@ void Graphe::afficherPredDijkstra(std::vector<std::pair<int,float>> pred,int fin
     }
     std::cout << " = ";
     std::cout << ctp;
-
+    std::cout << std::endl;
 }
 
 std::vector<int> Graphe::BFS(int depart)
@@ -259,10 +300,12 @@ std::vector<int> Graphe::BFS(int depart)
     return pred;
 }
 
-void Graphe::afficherPredBFS(std::vector<int> pred,int fin)
+void Graphe::afficherPredBFSAll(std::vector<int> pred)
 {
     int numpred;
-    std::cout << "Voici tout les chemins pour rejoindre les autres sommets :" << std::endl << std::endl;
+    std::cout << std::endl << std::endl;
+    std::cout << std::endl << std::endl;
+    std::cout << "Voici tout les chemins plus courts (en nombre de trajets) pour rejoindre les autres sommets :" << std::endl << std::endl;
 
     for(int i=0;i<m_ordre;i++)  //pour tout les sommets
     {
@@ -276,6 +319,21 @@ void Graphe::afficherPredBFS(std::vector<int> pred,int fin)
         std::cout << std::endl;
     }
 
+}
+
+void Graphe::afficherPredBFS(std::vector<int> pred,int fin)
+{
+    int numpred;
+    std::cout << std::endl << std::endl;
+    std::cout << std::endl << std::endl;
+    std::cout << fin +1;
+    numpred=pred[fin];
+    while(numpred!=-1)   //refaire le chemin fait dans la fonction de recherche BFS
+    {
+        std::cout << " <-- "<< numpred+1;
+        numpred=pred[numpred];
+    }
+    std::cout << std::endl;
 }
 
 void Graphe::reseau()
@@ -386,15 +444,7 @@ void Graphe::reseau()
     for(int i=0;i< m_taille;i++)
     {
         if(depart==m_listeArcs[i]->getArrivee())
-        {
-
-        }
+            m_listeSommet[m_listeArcs[i]->getDepart()]->removeAdjacence(depart);
     }
-    for(int i=0;i< m_taille;i++)
-    {
-        if(fin==m_listeArcs[i]->getDepart())
-        {
-
-        }
-    }
+    m_listeSommet[fin]->resetAdjacence();
 }

@@ -28,9 +28,13 @@ class Graphe
         void afficherTrajet();
         void afficherVoisins();
         void reseau();
+
         std::vector<std::pair<int,float>> dijkstra(int depart);
+        void afficherPredDijkstraAll(std::vector<std::pair<int,float>> pred);
         void afficherPredDijkstra(std::vector<std::pair<int,float>> pred,int fin);
+
         std::vector<int> BFS(int depart);
+        void afficherPredBFSAll(std::vector<int> pred);
         void afficherPredBFS(std::vector<int> pred,int fin);
 };
 

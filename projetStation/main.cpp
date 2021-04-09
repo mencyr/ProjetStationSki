@@ -13,6 +13,7 @@
 
 #define NombreChemin 12
 
+void interfaceBfsDijkstra(std::pair<int,int> DebutFin,Graphe Station);
 void interface0();
 std::vector<bool> interface4();
 std::pair<int,int> interface34();
@@ -98,16 +99,16 @@ void interface0()
             break;
 
         case 3:
-            Station.afficherPredBFS(Station.BFS(DF.first),DF.second);
             std::cout << std::endl << std::endl;
-            Station.afficherPredDijkstra(Station.dijkstra(DF.first),DF.second);
+            interfaceBfsDijkstra(DF,Station);
+            system("CLS");
             interface0();
             break;
 
         case 4:
-            Station.afficherPredBFS(Station.BFS(DF.first),DF.second);
             std::cout << std::endl << std::endl;
-            Station.afficherPredDijkstra(Station.dijkstra(DF.first),DF.second);
+            interfaceBfsDijkstra(DF,Station);
+            system("CLS");
             interface0();
             break;
         case 5:
@@ -202,5 +203,51 @@ std::pair<int,int> interface34()
     std::cin >> DebutFin.second;
     DebutFin.first--;
     DebutFin.second--;
+    system("CLS");
     return DebutFin;
+}
+
+void interfaceBfsDijkstra(std::pair<int,int> DebutFin,Graphe Station)
+{
+    int type;
+    std::vector<bool> choix {false,false,false};
+    std::cout << "Faire votre choix : " << std::endl << std::endl;
+    std::cout<<"                    0.   Afficher les plus courts chemins depuis le sommet de depart : "<<std::endl;
+    std::cout<<"                    1.   Afficher le plus court chemin entre les deux sommets : "<<std::endl;
+    std::cout<<"                    2.   Revenir au menu : "<<std::endl;
+    gotoligcol(10,20);
+    std::cout<<"     Votre choix:";
+    std::cin>>type;
+    gotoligcol(10,20);
+    std::cout<<"                    ";
+    for(int i=0;i<3;i++)
+    {
+        if(type==i)
+        {
+            for(int i=0;i<3;i++)
+            {
+                gotoligcol(i+3,17);
+                std::cout<<" ";
+                choix[i]=false;
+            }
+        }
+    }
+    if(type == 0)
+    {
+        Station.afficherPredBFSAll(Station.BFS(DebutFin.first));
+        Station.afficherPredDijkstraAll(Station.dijkstra(DebutFin.first));
+        std::cout << std::endl << "Entrer n'importe quel chiffre pour revenir au choix d'affichage : ";
+        std::cin >> type;
+        system("CLS");
+        interfaceBfsDijkstra(DebutFin,Station);
+    }
+    if(type == 1)
+    {
+        Station.afficherPredBFS(Station.BFS(DebutFin.first),DebutFin.second);
+        Station.afficherPredDijkstra(Station.dijkstra(DebutFin.first),DebutFin.second);
+        std::cout << std::endl << "Entrer n'importe quel chiffre pour revenir au choix d'affichage : ";
+        std::cin >> type;
+        system("CLS");
+        interfaceBfsDijkstra(DebutFin,Station);
+    }
 }

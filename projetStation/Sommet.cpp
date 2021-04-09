@@ -51,3 +51,14 @@ int Sommet::GetAlt()
 {
     return m_altitude;
 }
+
+void Sommet::resetAdjacence()
+{
+    m_adjacent.clear();
+}
+
+void Sommet::removeAdjacence(int sommet)
+{
+    m_adjacent.erase(m_adjacent.begin()+sommet);
+}
+
