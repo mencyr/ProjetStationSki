@@ -39,7 +39,7 @@ void heureEtDate()  ///HEURE ET DATE
     gotoligcol(1,96);
     std::cout<<"DATE ET HEURE ACTUELLE ";
     gotoligcol(2,100);
-    printf("%d/%d ; %d:%d\n", instant.tm_mday+1, instant.tm_mon+1, instant.tm_hour, instant.tm_min);
+    printf("%d/%d ; %d:%d\n", instant.tm_mday, instant.tm_mon+1, instant.tm_hour, instant.tm_min);
     gotoligcol(0,0);
 
 
@@ -51,6 +51,7 @@ int main()
 {
     ///HEURE ET DATE
     heureEtDate();
+
 
     ///INTERFACE
     interface0();

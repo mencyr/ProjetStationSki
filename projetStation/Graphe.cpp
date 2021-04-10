@@ -152,7 +152,7 @@ void Graphe::afficherVoisins()                                                  
         }
 }
 
-std::vector<std::pair<Sommet*,Arcs *>> Graphe::getSuccesseur(int i)
+std::vector<std::pair<Sommet*,Arcs *>> Graphe::getSuccesseur(int i)               ///SUCCESSEUR DU SOMMET I
 {
     std::vector<std::pair<Sommet*,Arcs *>> successeurtacaptemonreuf;
     for(int j=0;j<m_ordre;j++)
@@ -553,6 +553,10 @@ void Graphe::FordFulkerson()
     do
     {
         marquage=FordFulkersonMarque();
+        if(marquage[m_SourcePuit.second->getnbr()].first!=nullptr)
+        {
+
+        }
 
     }while(marquage[m_SourcePuit.second->getnbr()].first != nullptr);
 }
