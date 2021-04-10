@@ -11,6 +11,18 @@
 
 #define NombreChemin 12
 
+
+
+void gotoligcol1( int lig, int col ) ///GOTOLIGCOL
+{
+// ressources
+COORD mycoord;
+
+mycoord.X = col;
+mycoord.Y = lig;
+SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
+
 Graphe::Graphe(std::string nom,std::vector<bool> choix)  ///CONSTRUCTEUR DU GRAPHE AVEC OUVERTURE DU FICHIER
 {
     int w,x,y,z,ctp;
@@ -199,12 +211,15 @@ void Graphe::afficherPred(std::vector<std::pair<int,float>> pred,int depart,int 
     float numpred;   ///AFFICHAGE GRACE AUX VECTEUR DE PREDESSECEUR
     float poids=m_listeSommet[fin]->getpoids(pred[fin].first);
     std::cout << std::endl;
+    std::cout<<" Pour emprunter le chemin le plus rapide entre ces deux points, il faut: "<<std::endl;
+
     std::cout << fin +1;
     numpred=pred[fin].first;
     while(numpred!=-1)   //affichage du chemin  //pour les deux boucles d'affichages on utilise le vecteur de pred
     {
         std::cout << " <-- "<< numpred+1;
         numpred=pred[numpred].first;
+
     }
     std::cout << std::endl;
     numpred=pred[fin].first;   //affichage des poids
