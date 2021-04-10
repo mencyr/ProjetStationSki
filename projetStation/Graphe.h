@@ -39,6 +39,7 @@ class Graphe
         void afficherPredBFS(std::vector<int> pred,int fin);
 
         void reseau();
+        std::vector<std::pair<Sommet *,std::pair<int,int>>> FordFulkersonMarque();
         void FordFulkerson();
 };
 

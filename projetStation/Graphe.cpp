@@ -239,11 +239,18 @@ void Graphe::afficherPredDijkstraAll(std::vector<std::pair<int,float>> pred)    
 
 void Graphe::afficherPredDijkstra(std::vector<std::pair<int,float>> pred,int fin) ///AFFICHAGE D'UN SEUL PLUS COURT CHEMIN AVEC DIJKSTRA
 {
-    float numpred;   ///AFFICHAGE GRACE AUX VECTEUR DE PREDESSECEUR
+    float numpred;
+    int ctp2=0;   ///AFFICHAGE GRACE AUX VECTEUR DE PREDESSECEUR
     float poids=m_listeSommet[fin]->getpoids(pred[fin].first);
     std::cout << std::endl << std::endl;
     std::cout << std::endl << std::endl;
     std::cout << fin +1;
+    numpred=pred[fin].first;
+    while(numpred!=-1)   //affichage du chemin  //pour les deux boucles d'affichages on utilise le vecteur de pred
+    {
+        ctp2++;
+        numpred=pred[numpred].first;
+    }
     numpred=pred[fin].first;
     while(numpred!=-1)   //affichage du chemin  //pour les deux boucles d'affichages on utilise le vecteur de pred
     {
@@ -332,10 +339,16 @@ void Graphe::afficherPredBFSAll(std::vector<int> pred)                          
 
 void Graphe::afficherPredBFS(std::vector<int> pred,int fin)                       ///AFFICHAGE D'UN SEUL PLUS COURT CHEMIN AVEC BFS
 {
-    int numpred;
+    int numpred,ctp =0;
     std::cout << std::endl << std::endl;
     std::cout << std::endl << std::endl;
     std::cout << fin +1;
+    numpred=pred[fin];
+    while(numpred!=-1)   //refaire le chemin fait dans la fonction de recherche BFS
+    {
+        ctp++;
+        numpred=pred[numpred];
+    }
     numpred=pred[fin];
     while(numpred!=-1)   //refaire le chemin fait dans la fonction de recherche BFS
     {
@@ -458,13 +471,13 @@ void Graphe::reseau()                                                           
     m_listeSommet[fin]->resetAdjacence();
 }
 
-void Graphe::FordFulkerson()                                                      ///ALGORITHME DE FORD ET FULKERSON
+std::vector<std::pair<Sommet *,std::pair<int,int>>> Graphe::FordFulkersonMarque() ///ALGORITHME DE  MARQUAGE DE FORD ET FULKERSON
 {
     Sommet delta(38,"delta",10);
     std::vector<std::pair<Sommet *,std::pair<int,int>>> marquage;
     std::vector<bool> examen;
     bool finExamen = false;
-    int alpha;
+    int alpha,beta;
     for(int i=0;i<m_ordre;i++)
     {
         examen.push_back(false);
@@ -486,14 +499,42 @@ void Graphe::FordFulkerson()                                                    
             if(marquage[i].first != nullptr && (!examen[i]))
             {
                 alpha = abs(marquage[i].second.second);
-                for(auto elem : getSuccesseur(i))
+                for(auto elem : m_listeSommet[i]->getVectAdjda())
                 {
                     if(marquage[elem.first->getnbr()].first==nullptr)
                     {
-
+                        if(elem.second->getCapacite() > elem.second->getFlot())
+                        {
+                            beta = std::min(alpha,elem.second->getCapacite() - elem.second->getFlot());
+                            marquage[elem.first->getnbr()]=std::make_pair(m_listeSommet[i],std::make_pair(1,beta));
+                        }
                     }
                 }
+                for(auto elem : getSuccesseur(i))
+                {
+                    if(marquage[elem.second->getDepart()].first==nullptr)
+                    {
+                        if(elem.second->getFlot()>0)
+                        {
+                            beta = std::min(alpha,elem.second->getFlot());
+                            marquage[elem.second->getDepart()] = std::make_pair(m_listeSommet[elem.second->getArrivee()],std::make_pair(-1,beta));
+                        }
+                    }
+                }
+                examen[i]=true;
             }
         }
     }
+    return marquage;
+}
+
+void Graphe::FordFulkerson()
+{
+    int flot =0;
+    std::vector<std::pair<Sommet *,std::pair<int,int>>> marquage;
+    do
+    {
+        marquage=FordFulkersonMarque();
+
+    }while(marquage[m_SourcePuit.second->getnbr()].first != nullptr);
 }

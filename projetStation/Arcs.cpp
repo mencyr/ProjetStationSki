@@ -10,7 +10,7 @@
 #include <cmath>
 
 Arcs::Arcs(int num,std::string nom,std::string type,int depart,int arrive,int altd, int alta,int capa)
-:m_numTrajet(num),m_nomTrajet(nom),m_type(type),m_capacita(capa)
+:m_numTrajet(num),m_nomTrajet(nom),m_type(type),m_capacita(capa),m_flot(0)
 {
     if (m_type=="N")
     {
@@ -124,3 +124,12 @@ std::string Arcs::getType()
     return m_type;
 }
 
+int Arcs::getCapacite()
+{
+    return m_capacita;
+}
+
+int Arcs::getFlot()
+{
+    return m_flot;
+}

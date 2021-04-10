@@ -18,6 +18,7 @@ class Arcs
         std::string m_nomTrajet;
         std::string m_type;
         float m_duree;
+        int m_flot;
         int m_capacita;
         std::pair<int,int> m_SommetAdjacent;
     public:
@@ -25,8 +26,13 @@ class Arcs
         ~Arcs();
 
         float getDuree();
+
         int getDepart();
         int getArrivee();
+
+        int getCapacite();
+        int getFlot();
+
         std::string getNomTrajet();
         std::string getType();
 };

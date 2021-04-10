@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1617903795 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.cpp
+1618047177 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.cpp
 	"Arcs.h"
 	<iostream>
 	<vector>
@@ -10,7 +10,7 @@
 	<limits>
 	<cmath>
 
-1617903795 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.h
+1618045324 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\arcs.h
 	<iostream>
 	<vector>
 	<string>
@@ -52,7 +52,7 @@
 	<limits>
 	<windows.h>
 
-1618000171 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.h
+1618048976 c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.h
 	"Sommet.h"
 	"Arcs.h"
 	<iostream>
@@ -63,7 +63,7 @@
 	<utility>
 	<limits>
 
-1617977742 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.cpp
+1618050211 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\graphe.cpp
 	"Graphe.h"
 	<iostream>
 	<vector>
@@ -73,6 +73,7 @@
 	<utility>
 	<limits>
 	<windows.h>
+	<cmath>
 
 1617786027 source:c:\users\augus\onedrive\documents\github\projetstationski\projetstation\console.cpp
 	"console.h"
