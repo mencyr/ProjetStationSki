@@ -1,6 +1,8 @@
 #include "Graphe.h"
 #include "Sommet.h"
 #include "Arcs.h"
+#include "Personne.h"
+#include "Gotoligcol.h"
 
 #include <iostream>
 #include <vector>
@@ -18,20 +20,12 @@ std::vector<bool> interface4();
 std::pair<int,int> interface34();
 
 
-void gotoligcol( int lig, int col )
-{
-// ressources
-COORD mycoord;
-
-mycoord.X = col;
-mycoord.Y = lig;
-SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
-}
 
 
 int main()
 {
     interface0();
+
     return 0;
 }
 
@@ -80,16 +74,25 @@ void interface0()
 
         case 4:
             system("CLS");
-            choix=interface4();
+
+            choix=interface4();///appeler charger ou enregistrer
+            system("CLS");
             DF=interface34();
+
             break;
 
         default:
-            system("CLS");
+
             interface0();
             break;
     }
     Graphe Station("Graphe.txt",choix);
+
+        if(menu==4)
+        {
+        Personne nouveau("test",choix);
+        }
+
     switch(menu)
     {
         case 1:
@@ -186,6 +189,7 @@ std::vector<bool> interface4()
                 }
             }
         }
+
  return choix;
 }
 
@@ -200,5 +204,7 @@ std::pair<int,int> interface34()
     std::cin >> DebutFin.second;
     DebutFin.first--;
     DebutFin.second--;
+    system("CLS");
     return DebutFin;
+
 }

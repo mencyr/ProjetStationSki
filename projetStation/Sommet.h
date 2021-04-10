@@ -2,6 +2,7 @@
 #define SOMMET_H_INCLUDED
 
 #include "Arcs.h"
+
 #include <iostream>
 #include <vector>
 #include <string>
